@@ -10,6 +10,16 @@
   --search-dem: 10px;
   --sidebar-r-l-marg: 10px;
   --head-t-b-padd: 8px;
+  --ico-space: 80px;
+  --targs1-color: #0075ff;
+  --targs1-alt-color: #cce3ff;
+  --targs2-color: #f59e0b;
+  --targs2-alt-color: #fdecce;
+  --targs3-color: #22c55e;
+  --targs3-alt-color: #d3f3df;
+  --money-progress: 60%;
+  --projects-progress: 80%;
+  --team-progress: 30%;
 }
 * {
   box-sizing: border-box;
@@ -242,15 +252,17 @@ a {
   gap: 20px;
   margin-right: 20px;
   margin-left: 20px;
+  padding-bottom: 20px;
 }
 .wrapper > div {
   background-color: white;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 0 5px #ddd;
+  padding: 20px;
 }
-.wrapper > div:last-child {
-  margin-bottom: 20px;
+.wrapper > div h2 {
+  margin-top: 0;
 }
 @media (max-width: 767px) {
   .wrapper {
@@ -258,24 +270,28 @@ a {
     gap: 10px;
     margin-right: 10px;
     margin-left: 10px;
+    padding-bottom: 10px;
   }
   .wrapper > div {
     text-align: center;
     display: block;
+    padding: 10px;
   }
 }
 /* End Content */
 
 /* Start Welcome Widget */
 .wrapper .welcome {
-  position: relative;
-  padding-bottom: 20px;
+  padding-left: 0;
+  padding-top: 0;
+  padding-right: 0;
 }
 .wrapper .welcome .intro {
   background-color: #eee;
   display: flex;
   justify-content: space-between;
   padding: 20px;
+  position: relative;
 }
 .wrapper .welcome .intro h2 {
   margin: 0;
@@ -292,8 +308,8 @@ a {
   border-radius: 50%;
   width: 65px;
   border: 5px solid white;
-  top: 111px;
-  left: 23px;
+  bottom: -20%;
+  left: 4%;
   position: absolute;
   box-shadow: 0 0 5px #ddd;
 }
@@ -330,7 +346,7 @@ a {
     display: flex;
     justify-content: center;
   }
-  .wrapper .welcome .intro img {
+  .wrapper .welcome .intro .welcome {
     display: none;
   }
   .wrapper .welcome .avatar {
@@ -339,7 +355,7 @@ a {
     transform: translateX(-50%);
   }
   .wrapper .welcome .info {
-    justify-content: space-evenly;
+    flex-direction: column;
   }
   .wrapper .welcome .info .box h3 {
     font-size: 14px;
@@ -353,9 +369,6 @@ a {
 }
 /* End Welcome Widget */
 /* Start Draft Widget */
-.wrapper .draft {
-  padding: 20px;
-}
 .wrapper .draft h2 {
   margin-top: 0;
 }
@@ -395,3 +408,76 @@ a {
   }
 }
 /* End Draft Widget */
+/* Start Yearly Target */
+.targets > p {
+  color: var(--gray-color);
+}
+.targets .box {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.targets .box i {
+  font-size: 20px;
+  width: calc(var(--ico-space) + 18px);
+  height: var(--ico-space);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.money i {
+  color: var(--targs1-color);
+  background-color: var(--targs1-alt-color);
+}
+.Projects i {
+  color: var(--targs2-color);
+  background-color: var(--targs2-alt-color);
+}
+.team i {
+  color: var(--targs3-color);
+  background-color: var(--targs3-alt-color);
+}
+.targets .targ-title {
+  color: var(--gray-color);
+  margin-top: 6px;
+  margin-bottom: 0;
+}
+.targets .content p:not(.targ-title) {
+  font-weight: bold;
+  margin-top: 10px;
+}
+.targets .content :last-child {
+  width: 100%;
+  height: 4px;
+  position: relative;
+}
+.targets .content :last-child::before {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+.targets .money .content div {
+  background-color: var(--targs1-alt-color);
+}
+.targets .money .content div::before {
+  background-color: var(--targs1-color);
+  height: 100%;
+  width: var(--money-progress);
+}
+.targets .Projects .content div {
+  background-color: var(--targs2-alt-color);
+}
+.targets .Projects .content div::before {
+  background-color: var(--targs2-color);
+  height: 100%;
+  width: var(--projects-progress);
+}
+.targets .team .content div {
+  background-color: var(--targs3-alt-color);
+}
+.targets .team .content div::before {
+  background-color: var(--targs3-color);
+  height: 100%;
+  width: var(--team-progress);
+}
+/* End Yearly Target */
