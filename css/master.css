@@ -17,9 +17,10 @@
   --targs2-alt-color: #fdecce;
   --targs3-color: #22c55e;
   --targs3-alt-color: #d3f3df;
-  --money-progress: 60%;
-  --projects-progress: 80%;
+  --money-progress: 10%;
+  --Projects-progress: 80%;
   --team-progress: 30%;
+  --progress-bar-height: 4px;
 }
 * {
   box-sizing: border-box;
@@ -448,13 +449,29 @@ a {
 }
 .targets .content :last-child {
   width: 100%;
-  height: 4px;
+  height: var(--progress-bar-height);
   position: relative;
 }
 .targets .content :last-child::before {
   content: "";
   position: absolute;
   left: 0;
+}
+.targets .content :last-child::after {
+  position: absolute;
+  font-size: 12px;
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 75%,
+    69% 76%,
+    50% 100%,
+    30% 75%,
+    0% 75%
+  );
+  color: white;
+  padding: 4px 5px 10px;
+  bottom: calc(var(--progress-bar-height) + 1px);
 }
 .targets .money .content div {
   background-color: var(--targs1-alt-color);
@@ -464,13 +481,23 @@ a {
   height: 100%;
   width: var(--money-progress);
 }
+.targets .money .content div::after {
+  content: "10%";
+  background-color: var(--targs1-color);
+  left: calc(var(--money-progress) - 17px);
+}
 .targets .Projects .content div {
   background-color: var(--targs2-alt-color);
 }
 .targets .Projects .content div::before {
   background-color: var(--targs2-color);
   height: 100%;
-  width: var(--projects-progress);
+  width: var(--Projects-progress);
+}
+.targets .Projects .content div::after {
+  content: "80%";
+  background-color: var(--targs2-color);
+  left: calc(var(--Projects-progress) - 17px);
 }
 .targets .team .content div {
   background-color: var(--targs3-alt-color);
@@ -479,5 +506,10 @@ a {
   background-color: var(--targs3-color);
   height: 100%;
   width: var(--team-progress);
+}
+.targets .team .content div::after {
+  content: "20%";
+  background-color: var(--targs3-color);
+  left: calc(var(--team-progress) - 17px);
 }
 /* End Yearly Target */
