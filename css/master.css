@@ -17,10 +17,12 @@
   --targs2-alt-color: #fdecce;
   --targs3-color: #22c55e;
   --targs3-alt-color: #d3f3df;
-  --money-progress: 10%;
+  --money-progress: 15%;
   --Projects-progress: 80%;
   --team-progress: 30%;
   --progress-bar-height: 4px;
+  --spacers: 20px;
+  --mob-spacers: 10px;
 }
 * {
   box-sizing: border-box;
@@ -207,7 +209,7 @@ a {
 @media (max-width: 350px) {
   .head {
     flex-direction: column;
-    gap: 10px;
+    gap: var(--mob-spacers);
     padding: 5px;
   }
   .head .prof img {
@@ -250,17 +252,16 @@ a {
 .wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-  gap: 20px;
-  margin-right: 20px;
-  margin-left: 20px;
-  padding-bottom: 20px;
+  gap: var(--spacers);
+  margin-right: var(--spacers);
+  margin-left: var(--spacers);
 }
 .wrapper > div {
   background-color: white;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 0 5px #ddd;
-  padding: 20px;
+  padding: var(--spacers);
 }
 .wrapper > div h2 {
   margin-top: 0;
@@ -268,15 +269,13 @@ a {
 @media (max-width: 767px) {
   .wrapper {
     grid-template-columns: minmax(200px, 1fr);
-    gap: 10px;
-    margin-right: 10px;
-    margin-left: 10px;
-    padding-bottom: 10px;
+    gap: var(--mob-spacers);
+    margin-right: var(--mob-spacers);
+    margin-left: var(--mob-spacers);
   }
   .wrapper > div {
-    text-align: center;
     display: block;
-    padding: 10px;
+    padding: var(--mob-spacers);
   }
 }
 /* End Content */
@@ -291,7 +290,7 @@ a {
   background-color: #eee;
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: var(--spacers);
   position: relative;
 }
 .wrapper .welcome .intro h2 {
@@ -320,7 +319,7 @@ a {
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
   margin-top: 50px;
-  margin-bottom: 20px;
+  margin-bottom: var(--spacers);
   text-align: center;
 }
 .wrapper .welcome .info .box h3 {
@@ -372,9 +371,12 @@ a {
 /* Start Draft Widget */
 .wrapper .draft h2 {
   margin-top: 0;
+  margin-bottom: 14px;
 }
 .wrapper .draft p {
   color: var(--gray-color);
+  margin-top: 0;
+  font-size: 15px;
 }
 .wrapper .draft .title,
 .wrapper .draft .ideas {
@@ -390,21 +392,27 @@ a {
   outline: none;
 }
 .wrapper .draft .ideas {
-  margin: 20px 0 20px 0;
+  margin: var(--spacers) 0 var(--spacers) 0;
   height: 200px;
   resize: none;
 }
-.wrapper .draft a {
+.wrapper .draft .save-btn {
   display: block;
   width: fit-content;
   margin-left: auto;
   background-color: var(--main-color);
   color: white;
-  padding: 4px 12px;
+  padding: 4px 10px;
   border-radius: 6px;
+  border: none;
+}
+@media (max-width: 767px) {
+  .wrapper .draft .ideas {
+    margin: var(--mob-spacers) 0 var(--mob-spacers) 0;
+  }
 }
 @media (max-width: 430px) {
-  .wrapper .draft a {
+  .wrapper .draft .save-btn {
     margin: auto;
   }
 }
@@ -415,8 +423,8 @@ a {
 }
 .targets .box {
   display: flex;
-  gap: 20px;
-  margin-bottom: 20px;
+  gap: var(--spacers);
+  margin-bottom: var(--spacers);
 }
 .targets .box i {
   font-size: 20px;
@@ -482,7 +490,7 @@ a {
   width: var(--money-progress);
 }
 .targets .money .content div::after {
-  content: "10%";
+  content: "15%";
   background-color: var(--targs1-color);
   left: calc(var(--money-progress) - 17px);
 }
