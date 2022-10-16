@@ -308,7 +308,7 @@ a {
   border-radius: 50%;
   width: 65px;
   border: 5px solid white;
-  bottom: -20%;
+  bottom: -23%;
   left: 4%;
   position: absolute;
   box-shadow: 0 0 5px #ddd;
@@ -346,11 +346,14 @@ a {
     display: flex;
     justify-content: center;
   }
+  .wrapper .welcome .intro p {
+    text-align: center;
+  }
   .wrapper .welcome .intro .welcome {
     display: none;
   }
   .wrapper .welcome .avatar {
-    top: 75px;
+    top: 75%;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -365,6 +368,14 @@ a {
   }
   .wrapper .welcome a {
     margin: auto;
+  }
+}
+@media (max-width: 767px) {
+  .wrapper .welcome .intro {
+    padding: var(--mob-spacers);
+  }
+  .wrapper .welcome .info {
+    margin-bottom: var(--mob-spacers);
   }
 }
 /* End Welcome Widget */
