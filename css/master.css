@@ -14,9 +14,9 @@
   --targs1-color: #0075ff;
   --targs1-alt-color: #cce3ff;
   --targs2-color: #f59e0b;
-  --targs2-alt-color: #fdecce;
+  --targs2-alt-color: #f59f0a33;
   --targs3-color: #22c55e;
-  --targs3-alt-color: #d3f3df;
+  --targs3-alt-color: #22c55e33;
   --money-progress: 15%;
   --Projects-progress: 80%;
   --team-progress: 30%;
@@ -139,7 +139,7 @@ a {
 /* End Sidebar */
 /* Start Content */
 /* Start Head */
-.content {
+.page .content {
   width: 100%;
   /* overflow: hidden; */
 }
@@ -301,7 +301,7 @@ a {
   color: var(--gray-color);
   letter-spacing: 2px;
 }
-.wrapper .welcome .intro img {
+.wrapper .welcome .intro .welcome-img {
   max-width: 200px;
 }
 .wrapper .welcome .avatar {
@@ -337,8 +337,9 @@ a {
   display: block;
   width: fit-content;
   margin: 0 20px 0 auto;
+  transition: 0.3s;
 }
-.wrapper .welcome .butt a:hover {
+.wrapper .welcome a:hover {
   background-color: var(--main-alt-color);
 }
 @media (max-width: 430px) {
@@ -346,10 +347,7 @@ a {
     display: flex;
     justify-content: center;
   }
-  .wrapper .welcome .intro p {
-    text-align: center;
-  }
-  .wrapper .welcome .intro .welcome {
+  .wrapper .welcome .intro .welcome-img {
     display: none;
   }
   .wrapper .welcome .avatar {
@@ -374,6 +372,9 @@ a {
   .wrapper .welcome .intro {
     padding: var(--mob-spacers);
   }
+  .wrapper .welcome .intro p {
+    text-align: center;
+  }
   .wrapper .welcome .info {
     margin-bottom: var(--mob-spacers);
   }
@@ -382,11 +383,12 @@ a {
 /* Start Draft Widget */
 .wrapper .draft h2 {
   margin-top: 0;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
-.wrapper .draft p {
+.wrapper .draft > p {
   color: var(--gray-color);
   margin-top: 0;
+  margin-bottom: 20px;
   font-size: 15px;
 }
 .wrapper .draft .title,
@@ -416,6 +418,11 @@ a {
   padding: 4px 10px;
   border-radius: 6px;
   border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.wrapper .draft .save-btn:hover {
+  background-color: var(--main-alt-color);
 }
 @media (max-width: 767px) {
   .wrapper .draft .ideas {
@@ -429,106 +436,115 @@ a {
 }
 /* End Draft Widget */
 /* Start Yearly Target */
+.targets h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
 .targets > p {
   color: var(--gray-color);
+  font-size: 15px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+.targets .box:not(:last-child) {
+  margin-bottom: 20px;
 }
 .targets .box {
   display: flex;
-  gap: var(--spacers);
-  margin-bottom: var(--spacers);
 }
-.targets .box i {
-  font-size: 20px;
-  width: calc(var(--ico-space) + 18px);
-  height: var(--ico-space);
+.targets .box .content {
+  padding-top: 10px;
+}
+.targets .box .icon {
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 80px;
+  height: 80px;
+  margin-right: 15px;
 }
-.money i {
+.targets .money .icon {
   color: var(--targs1-color);
   background-color: var(--targs1-alt-color);
 }
-.Projects i {
+.targets .Projects .icon {
   color: var(--targs2-color);
   background-color: var(--targs2-alt-color);
 }
-.team i {
+.targets .team .icon {
   color: var(--targs3-color);
   background-color: var(--targs3-alt-color);
 }
 .targets .targ-title {
+  font-size: 14px;
   color: var(--gray-color);
-  margin-top: 6px;
-  margin-bottom: 0;
 }
-.targets .content p:not(.targ-title) {
+.targets .box .content > p {
+  margin-top: 5px;
+  margin-bottom: 10px;
   font-weight: bold;
-  margin-top: 10px;
 }
-.targets .content :last-child {
-  width: 100%;
-  height: var(--progress-bar-height);
+.targets .progress {
   position: relative;
+  height: 4px;
 }
-.targets .content :last-child::before {
-  content: "";
-  position: absolute;
-  left: 0;
-}
-.targets .content :last-child::after {
-  position: absolute;
-  font-size: 12px;
-  clip-path: polygon(
-    0% 0%,
-    100% 0%,
-    100% 75%,
-    69% 76%,
-    50% 100%,
-    30% 75%,
-    0% 75%
-  );
-  color: white;
-  padding: 4px 5px 10px;
-  bottom: calc(var(--progress-bar-height) + 1px);
-}
-.targets .money .content div {
+.targets .money .progress {
   background-color: var(--targs1-alt-color);
 }
-.targets .money .content div::before {
-  background-color: var(--targs1-color);
-  height: 100%;
-  width: var(--money-progress);
-}
-.targets .money .content div::after {
-  content: "15%";
-  background-color: var(--targs1-color);
-  left: calc(var(--money-progress) - 17px);
-}
-.targets .Projects .content div {
+.targets .Projects .progress {
   background-color: var(--targs2-alt-color);
 }
-.targets .Projects .content div::before {
-  background-color: var(--targs2-color);
+.targets .team .progress {
+  background-color: #adfcca;
+}
+.targets .progress > span {
+  position: absolute;
   height: 100%;
-  width: var(--Projects-progress);
 }
-.targets .Projects .content div::after {
-  content: "80%";
+.targets .money .progress > span {
+  background-color: var(--targs1-color);
+}
+.targets .Projects .progress > span {
   background-color: var(--targs2-color);
-  left: calc(var(--Projects-progress) - 17px);
 }
-.targets .team .content div {
-  background-color: var(--targs3-alt-color);
-}
-.targets .team .content div::before {
+.targets .team .progress > span {
   background-color: var(--targs3-color);
-  height: 100%;
-  width: var(--team-progress);
 }
-.targets .team .content div::after {
-  content: "20%";
+.targets .progress > span span {
+  position: absolute;
+  bottom: 10px;
+  right: -18px;
+  font-size: 13px;
+  padding: 3px 5px;
+  border-radius: 4px;
+  color: white;
+}
+.targets .money .progress > span span {
+  background-color: var(--targs1-color);
+}
+.targets .Projects .progress > span span {
+  background-color: var(--targs2-color);
+}
+.targets .team .progress > span span {
   background-color: var(--targs3-color);
-  left: calc(var(--team-progress) - 17px);
+}
+.targets .progress > span span::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  border: 4px solid;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -9px;
+}
+.targets .money .progress > span span::after {
+  border-color: var(--targs1-color) transparent transparent;
+}
+.targets .Projects .progress > span span::after {
+  border-color: var(--targs2-color) transparent transparent;
+}
+.targets .team .progress > span span::after {
+  border-color: var(--targs3-color) transparent transparent;
 }
 /* End Yearly Target */
